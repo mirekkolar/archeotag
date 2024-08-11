@@ -1,0 +1,8 @@
+services:
+
+  ocr:
+    container_name: ${COMPOSE_PROJECT_NAME:-archeotag}-ocr
+    build:
+      context: "."
+      dockerfile: docker/ocr/Dockerfile
+    profiles: [app]

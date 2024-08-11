@@ -1,0 +1,14 @@
+services:
+
+  ocr-dev:
+    container_name: ${COMPOSE_PROJECT_NAME:-archeotag}-ocr-dev
+    extends:
+      file: docker-compose.yaml
+      service: ocr
+    entrypoint: /bin/bash
+    command: ""
+    stdin_open: true
+    tty: true
+    volumes:
+      - ".:/app"
+    profiles: [ocr-dev]
