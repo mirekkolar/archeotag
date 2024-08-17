@@ -9,6 +9,8 @@ services:
     command: ""
     stdin_open: true
     tty: true
+    environment:
+      - AZURE_STORAGE_CONNECTION_STRING=AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;DefaultEndpointsProtocol=http;BlobEndpoint=http://host.docker.internal:10000/devstoreaccount1;
     volumes:
       - ".:/app"
     profiles: [ocr-dev]
