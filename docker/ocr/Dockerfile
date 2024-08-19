@@ -8,6 +8,7 @@ RUN pip install \
     opencv-python==4.10.0.84 \
     pdf2image==1.17.0 \
     pymupdf==1.24.9 \
+    pymupdf4llm==0.0.9 \
     Pillow==10.4.0 \
     pytesseract==0.3.10
 
