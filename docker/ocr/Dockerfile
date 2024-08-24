@@ -10,7 +10,8 @@ RUN pip install \
     pymupdf==1.24.9 \
     pymupdf4llm==0.0.9 \
     Pillow==10.4.0 \
-    pytesseract==0.3.10
+    pytesseract==0.3.10 \
+    tqdm==4.66.5
 
 COPY src /app/src
 COPY pyproject.toml /app/pyproject.toml

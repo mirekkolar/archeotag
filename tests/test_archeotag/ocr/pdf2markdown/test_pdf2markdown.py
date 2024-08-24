@@ -1,6 +1,7 @@
 import unittest
 from archeotag.utils.filesystem import get_filesystem
 from archeotag.ocr.pdf2markdown import pdf2markdown
+from archeotag.ocr.pdf2markdown.pdf2markdown import scanned2markdown
 import os
 import tempfile
 
@@ -42,9 +43,7 @@ class ComponentDesignTests(unittest.TestCase):
                 f.write(md_text.encode())
 
     def test_scanned_document(self):
-        TEST_FILE = (
-            f"{FILE_STORAGE}/tests/ocr/pdf2markdown/1529434615308_MTX196601639.pdf"
-        )
+        TEST_FILE = f"{FILE_STORAGE}/tests/ocr/pdf2markdown/1529434615308_MTX196601639_pages_4-5.pdf"
         check_exists(
             FILESYSTEM, TEST_FILE, "Skipping pdf2markdown test of scanned document"
         )
@@ -56,9 +55,8 @@ class ComponentDesignTests(unittest.TestCase):
             str,
             msg="output of pdf2markdown function is Markdown formatted string",
         )
-        characters_found = set([c for c in md_text if not c.isspace()])
-        self.assertSetEqual(
-            characters_found,
-            {"-"},
-            msg="Processing scanned document returns Markdown without any valid characters",
+        self.assertTrue(
+            'Výzkum sídliště z doby římské v trati "Záhumenice“'
+            in [line.strip() for line in md_text.split("\n")],
+            msg="Processed scanned document contains text parsed by tessaract OCR",
         )
