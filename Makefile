@@ -12,6 +12,9 @@ stop:
 ocr-dev:
 	docker-compose --profile ocr-dev up -d
 
+tagger-dev:
+	docker-compose --profile tagger-dev up -d
+
 log:
 	docker-compose --profile "*" logs -f --tail=5
 

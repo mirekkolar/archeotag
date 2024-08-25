@@ -15,3 +15,19 @@ services:
     volumes:
       - ".:/app"
     profiles: [ocr-dev]
+  
+  tagger-dev:
+    container_name: ${COMPOSE_PROJECT_NAME:-archeotag}-tagger-dev
+    extends:
+      file: docker-compose.yaml
+      service: tagger
+    entrypoint: /bin/bash
+    command: ""
+    stdin_open: true
+    tty: true
+    environment:
+      - AZURE_STORAGE_CONNECTION_STRING=AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;DefaultEndpointsProtocol=http;BlobEndpoint=http://host.docker.internal:10000/devstoreaccount1;
+      - FILE_STORAGE=/app/data
+    volumes:
+      - ".:/app"
+    profiles: [tagger-dev]

@@ -8,6 +8,12 @@ import tempfile
 FILE_STORAGE = os.getenv("FILE_STORAGE")
 FILESYSTEM = get_filesystem()
 
+TESSDATA_PREFIX = os.getenv("TESSDATA_PREFIX")
+if not TESSDATA_PREFIX:
+    raise unittest.SkipTest(
+        "TESSDATA_PREFIX environment variable not set. Skipping OCR tests"
+    )
+
 
 def check_exists(filesystem, file, msg):
     if not filesystem.exists(file):

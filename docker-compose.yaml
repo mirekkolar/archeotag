@@ -4,7 +4,14 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME:-archeotag}-ocr
     build:
       context: "."
-      dockerfile: docker/ocr/Dockerfile
+      dockerfile: Dockerfile
     environment:
       - TESSDATA_PREFIX=/usr/share/tesseract-ocr/5/tessdata
+    profiles: [app]
+  
+  tagger:
+    container_name: ${COMPOSE_PROJECT_NAME:-archeotag}-tagger
+    build:
+      context: "."
+      dockerfile: Dockerfile
     profiles: [app]
